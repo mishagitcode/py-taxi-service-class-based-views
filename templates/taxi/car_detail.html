@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Car: {{ object.model }}</h2>
+  <h2>Car: {{ car.model }}</h2>
 
   <h3>Manufacturer:</h3>
   <p>
-    Name: {{ object.manufacturer.name }} <br>
-    Country: {{ object.manufacturer.country }}
+    Name: {{ car.manufacturer.name }} <br>
+    Country: {{ car.manufacturer.country }}
   </p>
 
   <h3>Drivers:</h3>
@@ -16,14 +16,14 @@
       <th>Username</th>
       <th>License number</th>
     </tr>
-    {% for driver in object.drivers.all %}
+    {% for driver in car.drivers.all %}
     <tr>
       <td>{{ driver.id }}</td>
       <td><a href="{% url 'taxi:driver-detail' driver.id %}">{{ driver.username }}</a></td>
       <td>{{ driver.license_number }}</td>
     </tr>
     {% empty %}
-    <tr><td colspan="3">No drivers for this car.</td></tr>
+      <tr><td colspan="3">No drivers for this car.</td></tr>
     {% endfor %}
   </table>
 {% endblock %}
